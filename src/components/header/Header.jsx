@@ -5,7 +5,7 @@ import './Header.css'
 
 export default function Header(){
     return(
-        <header>
+        <header className='headerNav'>
             <a href="*" className='logo'>
                 <img className='logoIcon' src={logo} alt="logo" />
                 <img src={logoTitle} alt="logo" />

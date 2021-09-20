@@ -1,0 +1,14 @@
+.hello h2{
+    font-size: 48px;
+    font-weight: 500;
+    padding-bottom: 41px;
+}
+
+.name {
+    color: red
+}
+
+.hello p{
+    font-size: 18px;
+    font-weight: 400;
+}

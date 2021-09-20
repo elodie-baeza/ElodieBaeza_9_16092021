@@ -1,19 +1,19 @@
-header {
+.headerNav {
     background-color: black;
     display: flex;
     height: 10vh;
 }
 
-header nav {
+.headerNav nav {
     flex-grow: 22;
     display: flex;
     align-items: center;
     justify-content:space-around;
 }
 
-header a {
+.headerNav a {
     color: white;
-    font-size: 1.25rem;
+    font-size: 24px;
 }
 
 .logo{
