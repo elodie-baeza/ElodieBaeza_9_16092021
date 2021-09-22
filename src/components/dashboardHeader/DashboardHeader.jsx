@@ -1,7 +1,7 @@
 import React from 'react'
-import './Hello.css'
+import './DashboardHeader.css'
 
-export default function Hello(props){
+export default function DashboardHeader(props){
     return(
         <header className='hello'>
             <h2>Bonjour <span className='name'>{props.name}</span></h2>

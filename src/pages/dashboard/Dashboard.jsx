@@ -1,12 +1,12 @@
 import React from 'react'
 import './Dashboard.css'
-import Hello from 'components/hello/Hello'
+import DashboardHeader from 'components/dashboardHeader/DashboardHeader'
 import CardInfos from 'components/cardInfos/CardInfos'
 
 export default function Dashboard(){
     return(
         <main className='dashboard'>
-            <Hello name='Thomas'/>
+            <DashboardHeader name='Thomas'/>
             <section>
                 {/* <BarChart /> */}
                 {/* <LineChart /> */}
