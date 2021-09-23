@@ -39,7 +39,8 @@ export default function DonutChart({ data }) {
         svg
         .selectAll('whatever')
         .data(data_ready)
-        .join('path')
+        .enter()
+        .append('path')
         .attr('d', d3.arc()
             .innerRadius(100)         // This is the size of the donut hole
             .outerRadius(radius)

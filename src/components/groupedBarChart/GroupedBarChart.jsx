@@ -65,7 +65,8 @@ export default function GroupedBarChart({ data }) {
             .selectAll("g")
             // Enter in data = loop group per group
             .data(data)
-            .join("g")
+            .enter()
+            .append("g")
                 .attr("transform", d => `translate(${x(d.day.slice(-2))}, 0)`)
             .selectAll("rect")
             .data(function(d) { 
@@ -73,7 +74,7 @@ export default function GroupedBarChart({ data }) {
                      return {key: key, value: d[key]}; 
                 }); 
             })
-            .join("rect")
+            .enter().append("rect")
                 .attr("x", d => xSubgroup(d.key))
                 .attr("y", d => y(d.value))
                 .attr("width", xSubgroup.bandwidth())
