@@ -4,7 +4,7 @@ import DashboardHeader from 'components/dashboardHeader/DashboardHeader'
 import CardInfos from 'components/cardInfos/CardInfos'
 import GroupedBarChart from 'components/groupedBarChart/GroupedBarChart'
 import LineChart from 'components/lineChart/LineChart'
-import SpiderChart from 'components/spiderChart/SpiderChart'
+// import SpiderChart from 'components/spiderChart/SpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
 import data from 'data/data.js'
 
