@@ -8,7 +8,6 @@ import SpiderChart from 'components/spiderChart/SpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
 import data from 'data/data.js'
 
-
 export default function Dashboard(){
     return(
         <main className='dashboard'>

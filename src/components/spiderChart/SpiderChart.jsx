@@ -1,51 +1,56 @@
 import React from 'react'
 import './SpiderChart.css'
 import * as d3 from 'd3'
-import * as RadarChart from 'radar-chart-d3'
+import { RadarChart } from 'components/spiderChart/RadarChart.js'
+import formatUserPerformance from './formatUserPerformance'
 
-// ************* Bar Chart ************** //
-var data = [
-    {
-      className: 'germany', // optional, can be used for styling
-      axes: [
-        {axis: "strength", value: 13, yOffset: 10},
-        {axis: "intelligence", value: 6},
-        {axis: "charisma", value: 5},  
-        {axis: "dexterity", value: 9},  
-        {axis: "luck", value: 2, xOffset: -20}
-      ]
-    },
-    {
-      className: 'argentina',
-      axes: [
-        {axis: "strength", value: 6},
-        {axis: "intelligence", value: 7},
-        {axis: "charisma", value: 10},  
-        {axis: "dexterity", value: 13},  
-        {axis: "luck", value: 9}
-      ]
-    }
-];
+// const data = [
+//   [
+//     {"area": "Central ", "value": 80},
+//     {"area": "Kirkdale", "value": 40},
+//     {"area": "Kensington ", "value": 40},
+//     {"area": "Everton ", "value": 90},
+//     {"area": "Picton ", "value": 60},
+//     {"area": "Riverside ", "value": 80}
+//   ]
+// ]
 
-export default function SpiderChart() {
+export default function SpiderChart(data) {
 
-    console.log(data)
+  React.useEffect(() => {
+    // Config for the Radar chart
+    var config = {
+      radius: 5,
+      w: 180,
+      h: 180,
+      factor: 1,
+      factorLegend: 1,
+      levels: 5,
+      maxValue: 200,
+      radians: 2 * Math.PI,
+      opacityArea: 0.5,
+      ToRight: 5,
+      TranslateX: 40,
+      TranslateY: 40,
+      ExtraWidthX: 80,
+      ExtraWidthY: 80,
+      color: d3.scaleOrdinal().range(["#ff0000"])
+   }
+    //Call function to draw the Radar chart
+    // d3.json("data/toto.json", function(error, data) {
+        // if (error) throw error;
+        RadarChart.draw("#chart", formatUserPerformance(data.data), config);
+    // });
 
-    React.useEffect(() => {
-        RadarChart.defaultConfig.color = function() {};
-        RadarChart.defaultConfig.radius = 3;
-        RadarChart.defaultConfig.w = 260;
-        RadarChart.defaultConfig.h = 260;
+    var svg = d3.select('body')
+      .selectAll('svg')
+      .append('svg')
+      .attr("width", 260)
+      .attr("height", 260);
 
-        var chart = RadarChart.chart();
-        var cfg = chart.config(); // retrieve default config
-        var svg = d3.select('body').append('svg')
-            .attr('width', cfg.w + cfg.w + 50)
-            .attr('height', cfg.h + cfg.h / 4);
-        svg.append('g').classed('single', 1).datum(data).call(chart);
-    },[]);
+  },[data.data]);
 
-    return (
-	    <div class="chart-container" />
-    );
+  return (
+    <div id="chart" />
+  );
 }
