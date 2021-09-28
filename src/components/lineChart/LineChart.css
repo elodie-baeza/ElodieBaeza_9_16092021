@@ -1,0 +1,28 @@
+#lineChart svg{
+    background-color: #ff0000;
+    border-radius: 5px;
+}
+
+#lineChart .title{
+    fill: #ffffff;
+    opacity: 0.5;
+    transform: translate(34px, 29px);
+}
+
+#lineChart path{
+    stroke: #ffffff;
+    stroke-width: 2px;
+    fill: none;
+}
+
+#lineChart g text{
+    transform: translateX(21.6px);
+    fill: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#lineChart g line, #lineChart .domain{
+    display: none;
+}
+
