@@ -1,0 +1,25 @@
+#donutChart svg{
+    background-color: #FBFBFB;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#donutChart .pourcentValue{
+    font-weight: 700;
+    font-size: 26px;
+    text-anchor: middle;
+    transform: translateY(-13px);
+}
+
+#donutChart .title{
+    transform: translate(-50%, -45%);
+    font-weight: 500;
+}
+
+#donutChart .textInDonut{
+    text-anchor: middle;
+    transform: translateY(10px);
+    white-space: normal;
+    font-weight: 500;
+    fill: #9B9EAC;
+}
