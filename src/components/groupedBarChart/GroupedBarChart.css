@@ -1,5 +1,27 @@
-#groupedBarChart {
+#groupedBarChart svg{
     padding: 24px 32px 24px 32px;
     background: #FBFBFB;
     font-weight: 500;
+}
+
+#groupedBarChart .domain{
+    display: none;
+    fill: #9B9EAC;
+}
+
+#groupedBarChart g g text{
+    fill: #9B9EAC;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#groupedBarChart .title,
+#groupedBarChart .legend{
+    transform: translateY(-80px);
+}
+
+#groupedBarChart line{
+    stroke-width: 1px;
+    stroke: #dedede;
+    stroke-dasharray: 2,2;
 }
