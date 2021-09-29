@@ -42,11 +42,11 @@ export default function SpiderChart(data) {
         RadarChart.draw("#chart", formatUserPerformance(data.data), config);
     // });
 
-    var svg = d3.select('body')
-      .selectAll('svg')
-      .append('svg')
-      .attr("width", 260)
-      .attr("height", 260);
+    // d3.select('#chart')
+    //   .selectAll('svg')
+    //   .append('svg')
+    //   .attr("width", 260)
+    //   .attr("height", 260);
 
   },[data.data]);
 
