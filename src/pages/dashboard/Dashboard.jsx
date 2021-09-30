@@ -12,17 +12,17 @@ export default function Dashboard(){
     return(
         <main className='dashboard'>
             <DashboardHeader name='Thomas'/>
-            <section>
+            <section className='chartsContainer'>
                 <GroupedBarChart data={data.USER_ACTIVITY[0].sessions}/>
                 <LineChart data={data.USER_AVERAGE_SESSIONS[0].sessions} x={'day'} y={'sessionLength'}/>
                 <SpiderChart data={data.USER_PERFORMANCE[0]}/>
                 <DonutChart data={data.USER_MAIN_DATA[0].score}/>
-                <article>
-                    <CardInfos data='1,930' type='Calories' unit='kCal'/>
-                    <CardInfos data='155' type='Proteines' unit='g'/>
-                    <CardInfos data='290' type='Glucides' unit='g'/>
-                    <CardInfos data='50' type='Lipides' unit='g'/>
-                </article>
+            </section>
+            <section className='userMainData'>
+                <CardInfos data='1,930' type='Calories' unit='kCal'/>
+                <CardInfos data='155' type='Proteines' unit='g'/>
+                <CardInfos data='290' type='Glucides' unit='g'/>
+                <CardInfos data='50' type='Lipides' unit='g'/>
             </section>
         </main>
     )

@@ -10,12 +10,17 @@
   shape-rendering: crispEdges;
 } */
 
-#chart svg {
+#spiderChart {
+  margin-top: 2rem;
+}
+
+#spiderChart svg {
     /* position: absolute; */
     /* top: 50px; */
     /* left: 100px; */
     background-color: #282D30;
-    border-radius: 5px  
+    border-radius: 5px ;
+    width: auto;
 }
 
 .axis text{

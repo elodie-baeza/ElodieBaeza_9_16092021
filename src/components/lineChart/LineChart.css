@@ -1,6 +1,11 @@
+#lineChart {
+    margin-top: 2rem;
+}
+
 #lineChart svg{
     background-color: #ff0000;
     border-radius: 5px;
+    width: auto;
 }
 
 #lineChart .title{

@@ -1,7 +1,12 @@
+#groupedBarChart {
+    width: 100%;
+}
+
 #groupedBarChart svg{
     padding: 24px 32px 24px 32px;
     background: #FBFBFB;
     font-weight: 500;
+    border-radius: 5px;
 }
 
 #groupedBarChart .domain{

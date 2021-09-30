@@ -1,7 +1,13 @@
+#donutChart {
+    margin-top: 2rem;
+}
+
 #donutChart svg{
     background-color: #FBFBFB;
+    border-radius: 5px;
     padding: 20px;
     border-radius: 5px;
+    width: auto;
 }
 
 #donutChart .pourcentValue{

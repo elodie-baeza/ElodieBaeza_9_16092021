@@ -14,4 +14,7 @@
 .counter {
     display: flex;
     align-items: center;
+    width: 16rem;
+    background: #fbfbfb;
+    border-radius: 5px;
 }

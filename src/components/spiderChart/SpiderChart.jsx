@@ -39,7 +39,7 @@ export default function SpiderChart(data) {
     //Call function to draw the Radar chart
     // d3.json("data/toto.json", function(error, data) {
         // if (error) throw error;
-        RadarChart.draw("#chart", formatUserPerformance(data.data), config);
+        RadarChart.draw("#spiderChart", formatUserPerformance(data.data), config);
     // });
 
     // d3.select('#chart')
@@ -51,6 +51,6 @@ export default function SpiderChart(data) {
   },[data.data]);
 
   return (
-    <div id="chart" />
+    <div id="spiderChart" />
   );
 }
