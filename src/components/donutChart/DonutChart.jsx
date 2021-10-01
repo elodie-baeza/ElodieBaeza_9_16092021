@@ -24,7 +24,7 @@ export default function DonutChart({ data }) {
                 .attr("transform", "translate(" + (width / 2 - 20) + "," + (height / 2 - 20) + ")");
 
         // Create dummy data
-        var dataPourcent = {a:data*100, b:100-data*100}
+        var dataPourcent = {a:data, b:100-data}
 
         // set the color scale
         var color = d3.scaleOrdinal()
@@ -70,7 +70,7 @@ export default function DonutChart({ data }) {
             .attr('class', 'title')
 
         svg.append("text")
-            .text(`${data*100}%`)
+            .text(`${data}%`)
             .attr('class', 'pourcentValue')
 
         svg.append("text")
