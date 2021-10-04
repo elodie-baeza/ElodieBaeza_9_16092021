@@ -1,15 +1,13 @@
-#groupedBarChart {
-    width: 100%;
-}
-
-#groupedBarChart svg{
-    padding: 24px 32px 24px 32px;
+#groupedBarChart{
+    /* padding: 24px 32px 24px 32px; */
     background: #FBFBFB;
     font-weight: 500;
     border-radius: 5px;
+    width: 100%;
 }
 
-#groupedBarChart .domain{
+#groupedBarChart .domain,
+#groupedBarChart .x-axis line{
     display: none;
     fill: #9B9EAC;
 }
@@ -20,12 +18,7 @@
     font-size: 14px;
 }
 
-#groupedBarChart .title,
-#groupedBarChart .legend{
-    transform: translateY(-80px);
-}
-
-#groupedBarChart line{
+#groupedBarChart .y-axis line{
     stroke-width: 1px;
     stroke: #dedede;
     stroke-dasharray: 2,2;

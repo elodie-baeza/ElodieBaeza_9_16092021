@@ -1,6 +1,6 @@
 .dashboard {
     margin-left: 16vw;
-    margin-right: 6vw;
+    /* margin-right: 6vw; */
     margin-top: 4rem;
     display: flex;
     flex-wrap: wrap;

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './Dashboard.css'
 import DashboardHeader from 'components/dashboardHeader/DashboardHeader'
 import CardInfos from 'components/cardInfos/CardInfos'
-import GroupedBarChart from 'components/groupedBarChart/GroupedBarChart'
+import CallGroupedBarChart from 'components/groupedBarChart/CallGroupedBarChart'
 import LineChart from 'components/lineChart/LineChart'
 import SpiderChart from 'components/spiderChart/SpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
@@ -39,7 +39,7 @@ export default function Dashboard(){
             <main className='dashboard'>
                 <DashboardHeader name={userSelect.userInfos.firstName}/>
                 <section className='chartsContainer'>
-                    <GroupedBarChart userId={userSelect.id}/>
+                    <CallGroupedBarChart userId={userSelect.id}/>
                     <LineChart data={data.USER_AVERAGE_SESSIONS[0].sessions} x={'day'} y={'sessionLength'}/>
                     <SpiderChart data={data.USER_PERFORMANCE[0]}/>
                     <DonutChart data={userSelect.todayScore*100}/>
