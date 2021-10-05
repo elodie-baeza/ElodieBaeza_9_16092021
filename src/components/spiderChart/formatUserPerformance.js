@@ -1,27 +1,61 @@
-// const data = [
-//     {"area": "Central ", "value": 80},
-//     {"area": "Kirkdale", "value": 40},
-//     {"area": "Kensington ", "value": 40},
-//     {"area": "Everton ", "value": 90},
-//     {"area": "Picton ", "value": 60},
-//     {"area": "Riverside ", "value": 80}
+// const origin = {userId: 12,
+//     kind: {
+//         1: 'cardio',
+//         2: 'energy',
+//         3: 'endurance',
+//         4: 'strength',
+//         5: 'speed',
+//         6: 'intensity'
+//     },
+//     data: [
+//         {
+//             value: 80,
+//             kind: 1
+//         },
+//         {
+//             value: 120,
+//             kind: 2
+//         },
+//         {
+//             value: 140,
+//             kind: 3
+//         },
+//         {
+//             value: 50,
+//             kind: 4
+//         },
+//         {
+//             value: 200,
+//             kind: 5
+//         },
+//         {
+//             value: 90,
+//             kind: 6
+//         }]}
+
+
+// const dataFormated = [
+//     {"kind": "Cardio", "value": 80},
+//     {"kind": "Energie", "value": 120},
+//     {"kind": "Endurance ", "value": 140},
+//     {"kind": "Strength ", "value": 50},
+//     {"kind": "Speed ", "value": 200},
+//     {"kind": "Intensity ", "value": 90}
 // ]
 
 export default function formatUserPerformance(performanceObject) {
-    const dataFormated = [[]]
+    // dataFormated => [[{}, {}, {}, ]]
+    const dataFormated = [performanceObject.data]
 
-    performanceObject.data.forEach(obj => {
-        dataFormated[0].push(obj)
+    // Set an uppercase on first letter for kinds
+    const kindsArray = Object.values(performanceObject.kind)
+    kindsArray.forEach((element, index) => {
+        kindsArray[index] = element.charAt(0).toUpperCase() + element.slice(1)
     });
 
-    const kindArray = Object.values(performanceObject.kind)
-
-    kindArray.forEach((element, index) => {
-        kindArray[index] = element.charAt(0).toUpperCase() + element.slice(1)
-    });
-
+    // replace kind: 1 by kind: Cardio
     dataFormated[0].forEach((obj,index) => {
-        obj.kind = kindArray[index]
+        obj.kind = kindsArray[index]
     });
 
     return dataFormated

@@ -4,7 +4,7 @@ import DashboardHeader from 'components/dashboardHeader/DashboardHeader'
 import CardInfos from 'components/cardInfos/CardInfos'
 import CallGroupedBarChart from 'components/groupedBarChart/CallGroupedBarChart'
 import LineChart from 'components/lineChart/LineChart'
-import SpiderChart from 'components/spiderChart/SpiderChart'
+import CallSpiderChart from 'components/spiderChart/CallSpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
 import data from 'data/data.js'
 import API from 'data/API'
@@ -41,7 +41,7 @@ export default function Dashboard(){
                 <section className='chartsContainer'>
                     <CallGroupedBarChart userId={userSelect.id}/>
                     <LineChart data={data.USER_AVERAGE_SESSIONS[0].sessions} x={'day'} y={'sessionLength'}/>
-                    <SpiderChart data={data.USER_PERFORMANCE[0]}/>
+                    <CallSpiderChart userId={userSelect.id}/>
                     <DonutChart data={userSelect.todayScore*100}/>
                 </section>
                 <section className='userMainData'>
