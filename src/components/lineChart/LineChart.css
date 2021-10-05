@@ -21,7 +21,7 @@
 }
 
 #lineChart g text{
-    transform: translateX(21.6px);
+    /* transform: translateX(21.6px); */
     fill: #ffffff;
     font-size: 12px;
     font-weight: 500;
