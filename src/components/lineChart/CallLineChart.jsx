@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import API from 'data/API';
 import LineChart from './LineChart';
 
-export default function CallGroupedBarChart(props) {
+export default function CallLineChart(props) {
     const [sessions, setSessions] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);

@@ -21,11 +21,20 @@ export default function LineChart({ data }) {
 
             // Add X axis --> it is a date format
             var x = d3.scaleLinear()
-                .domain([ 1, 7 ])
-                .range([ 0, width ]);
+            .domain([ 1, 7 ])
+            .range([ 0, width ]);
+            
+            const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+            const xAxis = d3.axisBottom(x)
+                .ticks(7)
+                .tickFormat(function (d) {
+                    console.log(daysOfWeek[d-1])
+                    return daysOfWeek[d-1];
+            });
+
             svg.append("g")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x).ticks(7))
+                .call(xAxis)
 
             // Add Y axis
             var y = d3.scaleLinear()
