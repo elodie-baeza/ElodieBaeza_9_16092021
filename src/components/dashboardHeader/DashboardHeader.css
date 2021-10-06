@@ -1,19 +1,35 @@
-.hello h2{
-    font-size: 48px;
-    font-weight: 500;
-    padding-bottom: 41px;
+@media screen and (min-width: 1225px){
+    .hello h2{
+        font-size: 48px;
+        font-weight: 500;
+        padding-bottom: 41px;
+    }
+    
+    .name {
+        color: red
+    }
+    
+    .hello p{
+        font-size: 18px;
+        font-weight: 400;
+    }
+    
+    .hello {
+        margin-bottom: 50px;
+        width: 100%;
+    }
 }
 
-.name {
-    color: red
-}
+@media screen and (max-width: 1224px){
+    .hello h2{
+        font-size: 38px;
+        font-weight: 500;
+        padding-bottom: 20px;
+    }
+    
 
-.hello p{
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.hello {
-    margin-bottom: 50px;
-    width: 100%;
+    .hello {
+        margin-bottom: 10px;
+        width: 100%;
+    }    
 }

@@ -1,21 +1,52 @@
-.dashboard {
-    margin-left: 16vw;
-    /* margin-right: 6vw; */
-    margin-top: 4rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+@media screen and (min-width: 1225px){
+    .dashboard {
+        margin-left: 10vw;
+        margin-right: 2vw;
+        margin-top: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .chartsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 74%;
+        justify-content: space-between;
+    }
+    
+    .userMainData{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }
 
-.chartsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    justify-content: space-between;
+@media screen and (max-width: 1224px){
+    .dashboard {
+        margin-left: 15vw;
+        margin-right: 6vw;
+        margin-top: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .chartsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        order: 3;
+    }
+    
+    .userMainData{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        order: 2;
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
-.userMainData{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}

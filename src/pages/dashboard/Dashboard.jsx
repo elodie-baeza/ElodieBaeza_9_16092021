@@ -15,9 +15,9 @@ export default function Dashboard(){
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        API.getInitialUser()
+        API.getUserById(12)
             .then((response) => {
-                console.log(response.data.data)
+                // console.log(response.data.data)
                 setUserSelect(response.data.data);
             })
             .catch((error) => {
@@ -39,9 +39,9 @@ export default function Dashboard(){
                 <DashboardHeader name={userSelect.userInfos.firstName}/>
                 <section className='chartsContainer'>
                     <CallGroupedBarChart userId={userSelect.id}/>
-                    <CallLineChart userId={userSelect.id} x={'day'} y={'sessionLength'}/>
+                    <CallLineChart userId={userSelect.id}/>
                     <CallSpiderChart userId={userSelect.id}/>
-                    <DonutChart data={userSelect.todayScore*100}/>
+                    <DonutChart data={userSelect.score*100}/>
                 </section>
                 <section className='userMainData'>
                     <CardInfos data={formatData.calTokCal(userSelect.keyData.calorieCount)} type='Calories' unit='kCal'/>
