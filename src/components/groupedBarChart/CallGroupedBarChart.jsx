@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import API from 'data/API';
 import GroupedBarChart from './GroupedBarChart';
+import PropTypes from 'prop-types';
 
 export default function CallGroupedBarChart(props) {
     const [activity, setActivity] = useState(null);
@@ -32,3 +33,9 @@ export default function CallGroupedBarChart(props) {
         );
     }
 }
+
+CallGroupedBarChart.propTypes = {
+
+    userId: PropTypes.number.isRequired
+
+};

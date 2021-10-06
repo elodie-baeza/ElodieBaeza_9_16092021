@@ -1,6 +1,7 @@
 import React from 'react'
 import './DonutChart.css'
 import * as d3 from 'd3'
+import PropTypes from 'prop-types';
 
 export default function DonutChart({ data }) {
 
@@ -84,3 +85,9 @@ export default function DonutChart({ data }) {
         <div id="donutChart" />
     );
 }
+
+DonutChart.propTypes = {
+
+    data: PropTypes.number.isRequired
+
+};

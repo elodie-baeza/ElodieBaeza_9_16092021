@@ -4,6 +4,7 @@ import caloriesIcon from 'assets/calories-icon.png'
 import glucidesIcon from 'assets/carbs-icon.png'
 import lipidesIcon from 'assets/fat-icon.png'
 import proteinIcon from 'assets/protein-icon.png'
+import PropTypes from 'prop-types'
 
 export default function CardInfos({type, unit, data}){
     return(
@@ -30,3 +31,9 @@ export default function CardInfos({type, unit, data}){
         </div>
     )
 }
+
+CardInfos.propTypes = {
+
+    data: PropTypes.number.isRequired
+
+};

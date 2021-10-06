@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import API from 'data/API';
 import LineChart from './LineChart';
+import PropTypes from 'prop-types';
 
 export default function CallLineChart(props) {
     const [sessions, setSessions] = useState(null);
@@ -32,3 +33,9 @@ export default function CallLineChart(props) {
         );
     }
 }
+
+CallLineChart.propTypes = {
+
+    userId: PropTypes.number.isRequired
+
+};
