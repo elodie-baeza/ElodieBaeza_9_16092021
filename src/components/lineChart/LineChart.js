@@ -7,7 +7,7 @@ export default function LineChart({ data }) {
     const ref = useD3(
         (svg) => {
             // set the dimensions and margins of the graph
-            var margin = {top: 30, right: 0, bottom: 30, left: 0},
+            var margin = {top: 30, right: 10, bottom: 30, left: 10},
             width = 260 - margin.left - margin.right,
             height = 260 - margin.top - margin.bottom;
 
@@ -18,90 +18,137 @@ export default function LineChart({ data }) {
                     .attr("height", height + margin.top + margin.bottom)
             // .append("g")
             //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+            
             // Add X axis --> it is a date format
             var x = d3.scaleLinear()
-                .domain([ 1, 7 ])
-                .range([ 0, width ]);
+            .domain([ 1, 7 ])
+            .range([ 0, width ]);
             
             const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
             const xAxis = d3.axisBottom(x)
-                .ticks(7)
-                .tickFormat(function (d) {
-                    return daysOfWeek[d-1];
+            .ticks(7)
+            .tickFormat(function (d) {
+                return daysOfWeek[d-1];
                 });
-
+                
             svg.append("g")
-                .attr("transform", "translate(0," + height + ")")
+            .attr("transform", `translate(${margin.left},${height + 20})`)
                 .call(xAxis)
-
+                
             // Add Y axis
             var y = d3.scaleLinear()
                 .domain([0, 120])
                 .range([ height, 0 ]);
-            // svg.append("g")
-            //     .call(d3.axisLeft(y));
-            
-            //////////////////////// TOOLTIP /////////////////////////////
-            
-            // This allows to find the closest X index of the mouse:
-            var bisect = d3.bisector(function(d) { return d.day; }).left;
+                // svg.append("g")
+                //     .call(d3.axisLeft(y));
+                
+            // week-end area
+            svg.append('rect')
+                .attr("width", 70)
+                .attr("height", height + margin.top + margin.bottom)
+                .attr('transform', `translate(${width + margin.left + margin.right - 70}, 0)`)
+                .style("fill", "black")
+                .style("fill-opacity", ".1");
 
-            // Create the circle that travels along the curve of chart
-            var focus = svg
-                .append('g')
-                .append('circle')
-                    .style("fill", "white")
-                    .attr("stroke", "white")
-                    .attr('r', 4)
-                    .style("opacity", 0)
-
-            // Create the text that travels along the curve of chart
-            var focusText = svg
-                .append('g')
-                .append('text')
-                    .style("opacity", 0)
-                    .style('fill', 'black')
-                    .style('transform', 'translate(10px, -20px)')
-                    .attr("text-anchor", "left")
-                    .attr("alignment-baseline", "middle")
-
+            // Create the curve line
             svg.append("path")
                 .datum(data)
+                .attr('transform', `translate(${margin.left}, 0)`)
                 .attr("d", d3.line()
                     .x((d) => {return x(d.day)})
                     .y((d) => {return y(d.sessionLength)})
                     .curve(d3.curveNatural)
                 )
             
-            // Create a rect on top of the svg area: this rectangle recovers mouse position
-            svg
-                .append('rect')
-                    .style("fill", "none")
-                    .style("pointer-events", "all")
-                    .attr('width', width)
-                    .attr('height', height)
-                    .on('mouseover', mouseover)
-                    .on('mousemove', function(event){
-                        var x0 = x.invert(d3.pointer(event,this)[0])
-                        var i = bisect(data, x0, 1);
-                        const selectedData = data[i];
-                        focus
-                            .attr("cx", x(selectedData.day))
-                            .attr("cy", y(selectedData.sessionLength))
-                        focusText
-                            .html(selectedData.sessionLength + ' min')
-                            .attr("x", x(selectedData.day))
-                            .attr("y", y(selectedData.sessionLength))
+            //////////////////////// TOOLTIP /////////////////////////////
             
-                    })
-                    .on('mouseout', mouseout);
+            // This allows to find the closest X index of the mouse:
+            var bisect = d3.bisector(function(d) { return d.day; }).center;
+
+            // Create the circle that travels along the curve of chart
+            var focus = svg
+                // .append('g')
+                .append('circle')
+                    .style("fill", "white")
+                    .attr('transform', `translate(${margin.left}, 0)`)
+                    .attr("stroke", "white")
+                    .attr('r', 4)
+                    .style("opacity", 0)
+
+            // Create the text that travels along the curve of chart
+            var rect = svg
+                .append('g')
+                    .attr('id', 'focusText')
+                // .select('#focusText')
+                .append("rect")
+                .style("opacity", 0)
+                // .attr("x", bbox.x)
+                // .attr("y", bbox.y)
+                .style('transform', 'translate(15px, -30px)')
+                .attr("width", 40)
+                .attr("height", 25)
+                .style("fill", "white")
+                // .style("fill-opacity", ".3")
+                // .style("stroke", "#666")
+                // .style("stroke-width", "1.5px"); 
+
+            var focusText = svg
+                // .append('g')
+                //     .attr('id', 'focusText')
+                .select('#focusText')
+                .append('text')
+                    .style("opacity", 0)
+                    .style('fill', 'black')
+                    .style('transform', 'translate(20px, -17px)')
+                    .attr("text-anchor", "left")
+                    .attr("alignment-baseline", "middle")
+                    .attr('font-size', '8px')
+
+            //  ligne vertical qui suivra le curseur de la souris
+            var verticalLine = svg.append("line")
+                .attr("class", "verticalLine")
+                .attr("x1",0)
+                .attr("y1",0)
+                .attr("x2",0)
+                .attr("y2",height)
+                .style("opacity", 0)
+                .style('fill', 'black');
+            
+            // Create a rect on top of the svg area: this rectangle recovers mouse position
+            svg.append('rect')
+                // .attr('transform', `translate(${margin.left}, 0)`)
+                .attr("width", 260)
+                .attr("height", 260)
+                .style("fill", "none")
+                .style("pointer-events", "all")
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom)
+                .on('mouseover', mouseover)
+                .on('mousemove', function(event){
+                    var x0 = x.invert(d3.pointer(event,this)[0])
+                    var i = bisect(data, x0, 1);
+                    const selectedData = data[i];
+                    focus
+                        .attr("cx", x(selectedData.day))
+                        .attr("cy", y(selectedData.sessionLength))
+                    focusText
+                        .html(selectedData.sessionLength + ' min')
+                        .attr("x", x(selectedData.day))
+                        .attr("y", y(selectedData.sessionLength))
+                    rect
+                        .html(selectedData.sessionLength + ' min')
+                        .attr("x", x(selectedData.day))
+                        .attr("y", y(selectedData.sessionLength))
+                })
+                .on('mouseout', mouseout);
 
 
             // What happens when the mouse move -> show the annotations at the right positions.
             function mouseover() {
                 focus.style("opacity", 1)
                 focusText.style("opacity",1)
+                // verticalLine.style("opacity",1)
+                rect.style("opacity",1)
             }
             // function mousemove() {
             //     // recover coordinate we need
@@ -119,20 +166,20 @@ export default function LineChart({ data }) {
             function mouseout() {
                 focus.style("opacity", 0)
                 focusText.style("opacity", 0)
+                // verticalLine.style("opacity",0)
+                rect.style("opacity",0)
             }
 
-            //  ligne vertical qui suivra le curseur de la souris
-            var verticalLine = svg.append("line")
-                .attr("class", "verticalLine")
-                .attr("x1",0)
-                .attr("y1",0)
-                .attr("x2",0)
-                .attr("y2",height)
-                .style("opacity", 0);
+            svg.append('g')
+                    .attr('class', 'title')
+                .append("text")
+                    .text(`Durée moyenne des`)
+                
+            svg.select('.title')
+                .append("text")
+                .text(`sessions`)
+                .style('transform', 'translate(0, 25px)')
 
-            svg.append("text")
-                .text('Durée moyenne des sessions')
-                .attr('class', 'title')
     }, [data.length]);
 
     return (

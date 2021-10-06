@@ -11,7 +11,9 @@
 #lineChart .title{
     fill: #ffffff;
     opacity: 0.5;
-    transform: translate(34px, 29px);
+    transform: translate(34px, 45px);
+    font-size: 15px;
+    font-weight: 500;
 }
 
 #lineChart path{
@@ -20,7 +22,7 @@
     fill: none;
 }
 
-#lineChart g text{
+#lineChart .tick text{
     /* transform: translateX(21.6px); */
     fill: #ffffff;
     font-size: 12px;
@@ -30,4 +32,3 @@
 #lineChart g line, #lineChart .domain{
     display: none;
 }
-
