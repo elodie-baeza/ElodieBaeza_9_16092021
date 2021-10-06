@@ -30,12 +30,12 @@ export default function SpiderChart({ data }) {
       radians: 2 * Math.PI,
       opacityArea: 0.5,
       ToRight: 5,
-      TranslateX: 40,
+      TranslateX: 45,
       TranslateY: 40,
-      ExtraWidthX: 80,
+      ExtraWidthX: 85,
       ExtraWidthY: 80,
       color: d3.scaleOrdinal().range(["#ff0000"])
-   }
+    }
     //Call function to draw the Radar chart
     // d3.json("data/toto.json", function(error, data) {
         // if (error) throw error;
@@ -48,7 +48,6 @@ export default function SpiderChart({ data }) {
     //   .attr("width", 260)
     //   .attr("height", 260);
     var allAxis = (formatUserPerformance(data)[0].map(function(i, j){return i.kind}));
-    console.log(allAxis)
     var total = allAxis.length;
     var radius = config.factor*Math.min(config.w/2, config.h/2);
     //   var Format = d3.format('%');
