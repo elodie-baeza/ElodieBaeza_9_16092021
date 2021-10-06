@@ -42,14 +42,26 @@ export default function DonutChart({ data }) {
         .data(data_ready)
         .join('path')
             .attr('d', d3.arc()
+                .cornerRadius(5)
                 .innerRadius(radius - 10)      // This is the size of the donut hole
                 .outerRadius(radius)
             )
             .attr('fill', d => color(d.data[0]))
+        // .attr("stroke", "black")
+        // .style("stroke-width", "2px")
+        // .style("opacity", 0.7)
 
-            // .attr("stroke", "black")
-            // .style("stroke-width", "2px")
-            // .style("opacity", 0.7)
+        // Build the white inner circle
+        svg
+        .selectAll('whatever')
+        .data(data_ready)
+        .join('path')
+            .attr('d', d3.arc()
+                .innerRadius(0)      
+                .outerRadius(radius - 10)
+            )
+            .attr('fill', 'white')
+
             
         //svg
         // .selectAll('whatever')
