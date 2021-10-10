@@ -8,14 +8,17 @@ import CallSpiderChart from 'components/spiderChart/CallSpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
 import API from 'data/API'
 import formatData from 'data/formatData'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router-dom'
 
 export default function Dashboard(){
     const [userSelect, setUserSelect] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    let { id } = useParams()
 
     useEffect(() => {
-        API.getUserById(12)
+        API.getUserById(id)
             .then((response) => {
                 // console.log(response.data.data)
                 setUserSelect(response.data.data);
@@ -53,3 +56,9 @@ export default function Dashboard(){
         )
     }
 }
+
+Dashboard.propTypes = {
+
+    data: PropTypes.number.isRequired
+
+};
