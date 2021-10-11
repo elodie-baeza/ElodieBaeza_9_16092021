@@ -1,17 +1,17 @@
-.counterValue {
+.cardValue {
     font-weight: 700;
     font-size: 20px;
 }
 
-.counter p {
+.card p {
     line-height: 24px;
 }
 
-.counter img{
+.card img{
     padding: 2rem 1rem 2rem 2rem;
 }
 
-.counter {
+.card {
     display: flex;
     align-items: center;
     width: auto;

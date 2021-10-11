@@ -6,9 +6,14 @@ import lipidesIcon from 'assets/fat-icon.png'
 import proteinIcon from 'assets/protein-icon.png'
 import PropTypes from 'prop-types'
 
-export default function CardInfos({type, unit, data}){
+/**
+ * Create custom card with icon corresponding to type
+ * 
+ * @component
+ */
+function CardInfos({type, unit, value}){
     return(
-        <div className='counter'>
+        <div className='card'>
             {(() => {
                 switch (type) {
                     case 'Calories':
@@ -27,13 +32,24 @@ export default function CardInfos({type, unit, data}){
                         return null
                 }
             })()}
-            <p><span className='counterValue'>{data}{unit}</span><br />{type}</p>
+            <p><span className='cardValue'>{value}{unit}</span><br />{type}</p>
         </div>
     )
 }
 
 CardInfos.propTypes = {
+    /**
+     * Type quantity
+     */
+    value: PropTypes.number.isRequired,
+    /**
+     * Type unit
+     */
+    unit: PropTypes.string.isRequired,
+    /**
+     * Data type
+     */
+    type: PropTypes.oneOf(['Calories', 'Proteines', 'Glucides', 'Lipides']).isRequired
+}
 
-    data: PropTypes.number.isRequired
-
-};
+export default CardInfos
