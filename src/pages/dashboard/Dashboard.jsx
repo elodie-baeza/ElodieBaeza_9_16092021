@@ -8,7 +8,6 @@ import CallSpiderChart from 'components/spiderChart/CallSpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
 import API from 'data/API'
 import formatData from 'data/formatData'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
 
 /**
@@ -16,13 +15,14 @@ import { useParams } from 'react-router-dom'
  * @component
  */
 function Dashboard(){
-    const [userSelect, setUserSelect] = useState(12);
+    const [userSelect, setUserSelect] = useState();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     let { id } = useParams()
 
     useEffect(() => {
-        id === undefined && API.getUserById(userSelect)
+        // call API user 12 par défault avec path '/'
+        id === undefined && API.getUserById(12)
             .then((response) => {
                 setUserSelect(response.data.data);
             })
@@ -33,6 +33,7 @@ function Dashboard(){
             .finally(() => {
                 setLoading(false);
             });
+        //  call API avec id url si path '/user/18' 
         id !== undefined && API.getUserById(id)
             .then((response) => {
                 setUserSelect(response.data.data);
@@ -44,7 +45,7 @@ function Dashboard(){
             .finally(() => {
                 setLoading(false);
             });
-    }, []);
+    }, [id]);
 
     if (loading) {
         return <div>Loading</div>;
