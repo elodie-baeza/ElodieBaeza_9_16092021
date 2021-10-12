@@ -1,8 +1,14 @@
 import * as d3 from 'd3';
 import { useD3 } from 'hooks/useD3';
 import './GroupedBarChart.css'
+import PropTypes from 'prop-types';
 
-export default function GroupedBarChart({ data }) {
+/**
+ * Create grouped bar chart and tooltip with D3 library
+ * 
+ * @component
+ */
+function GroupedBarChart({ data }) {
     const ref = useD3(
         (svg) => {
             // set the dimensions and margins of the graph
@@ -188,3 +194,21 @@ export default function GroupedBarChart({ data }) {
 
     );
 }
+/**
+ * @example
+ * data = [ {day: '2020-07-01', kilogram: 70, calories: 240},
+ * {day: '2020-07-02', kilogram: 69, calories: 220},
+ * {day: '2020-07-03', kilogram: 70, calories: 280},
+ * {day: '2020-07-04', kilogram: 70, calories: 500},
+ * {day: '2020-07-05', kilogram: 69, calories: 160},
+ * {day: '2020-07-06', kilogram: 69, calories: 162},
+ * {day: '2020-07-07', kilogram: 69, calories: 390} ]
+ */
+GroupedBarChart.propTypes = {
+    /**
+     * data is an array
+     */
+    data: PropTypes.array.isRequired
+}
+
+export default GroupedBarChart

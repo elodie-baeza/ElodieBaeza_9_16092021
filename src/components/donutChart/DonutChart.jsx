@@ -2,10 +2,12 @@ import React from 'react'
 import './DonutChart.css'
 import * as d3 from 'd3'
 import PropTypes from 'prop-types';
-
-export default function DonutChart({ data }) {
-
-    // console.log(data)
+/**
+ * Create a donut chart with user score
+ * 
+ * @component
+ */
+function DonutChart({ value }) {
 
     React.useEffect(() => {
         // set the dimensions and margins of the graph
@@ -25,7 +27,7 @@ export default function DonutChart({ data }) {
                 .attr("transform", "translate(" + (width / 2 - 20) + "," + (height / 2 - 20) + ")");
 
         // Create dummy data
-        var dataPourcent = {a:data, b:100-data}
+        var dataPourcent = {a:value, b:100-value}
 
         // set the color scale
         var color = d3.scaleOrdinal()
@@ -47,9 +49,6 @@ export default function DonutChart({ data }) {
                 .outerRadius(radius)
             )
             .attr('fill', d => color(d.data[0]))
-        // .attr("stroke", "black")
-        // .style("stroke-width", "2px")
-        // .style("opacity", 0.7)
 
         // Build the white inner circle
         svg
@@ -62,28 +61,12 @@ export default function DonutChart({ data }) {
             )
             .attr('fill', 'white')
 
-            
-        //svg
-        // .selectAll('whatever')
-        // .append('path')
-        //     .attr('d', d3.arc()
-        //         .innerRadius(80)
-        //         .outerRadius(80)
-        //         .startAngle(100)
-        //         .endAngle(2 * 180)
-        //     )
-        //     .attr('fill', '#ffffff')
-
-        // svg.select('path:nth-child(2)')
-        //     .attr('fill', '#ffffff')
-
-
         svg.append("text")
             .text('Score')
             .attr('class', 'title')
 
         svg.append("text")
-            .text(`${data}%`)
+            .text(`${value}%`)
             .attr('class', 'pourcentValue')
 
         svg.append("text")
@@ -91,7 +74,7 @@ export default function DonutChart({ data }) {
             .attr('class', 'textInDonut')
 
 
-    },[data]);
+    },[value]);
 
     return (
         <div id="donutChart" />
@@ -99,7 +82,10 @@ export default function DonutChart({ data }) {
 }
 
 DonutChart.propTypes = {
-
-    data: PropTypes.number.isRequired
-
+    /**
+     * value is an integer
+     */
+    value: PropTypes.number.isRequired
 };
+
+export default DonutChart

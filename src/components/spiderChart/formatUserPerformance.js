@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 // const origin = {userId: 12,
 //     kind: {
 //         1: 'cardio',
@@ -43,7 +45,12 @@
 //     {"kind": "Intensity ", "value": 90}
 // ]
 
-export default function formatUserPerformance(performanceObject) {
+/**
+ * Replace kind as number by kind as string corresponding
+ * 
+ * @function 
+ */
+function formatUserPerformance(performanceObject) {
     // dataFormated => [[{}, {}, {}, ]]
     const dataFormated = [performanceObject.data]
 
@@ -60,3 +67,9 @@ export default function formatUserPerformance(performanceObject) {
 
     return dataFormated
 }
+
+formatUserPerformance.PropTypes = {
+    performanceObject: PropTypes.object.isRequired
+}
+
+export default formatUserPerformance

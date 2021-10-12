@@ -2,6 +2,7 @@ import * as d3 from 'd3'
 import { useD3 } from 'hooks/useD3'
 import formatUserPerformance from './formatUserPerformance'
 import './SpiderChart.css'
+import PropTypes from 'prop-types';
 
 // const data = [
 //   [
@@ -14,9 +15,14 @@ import './SpiderChart.css'
 //   ]
 // ]
 
-export default function SpiderChart({ data }) {
+/**
+ * Create spider chart with D3 library
+ * 
+ * @component 
+ */
+function SpiderChart({ data }) {
 
-  const ref = useD3(
+  useD3(
     (svg) => {
     // Config for the Radar chart
     var config = {
@@ -146,3 +152,20 @@ export default function SpiderChart({ data }) {
     <div id="spiderChart" />
   );
 }
+
+/**
+ * @example
+ * data = {
+ * userId: 12,
+ * kind: { 1: 'cardio', 2: 'energy' },
+ * data: [ {value: 80, kind: 1}, {value: 120, kind: 2} ]
+ * }
+ */
+SpiderChart.propTypes = {
+  /**
+   * data is an object
+   */
+  data: PropTypes.object.isRequired
+}
+
+export default SpiderChart

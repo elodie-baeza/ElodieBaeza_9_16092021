@@ -62,9 +62,9 @@ function Dashboard(){
                 </section>
                 <section className='userMainData'>
                     <CardInfos value={formatData.calTokCal(userSelect.keyData.calorieCount)} type='Calories' unit='kCal'/>
-                    <CardInfos value={userSelect.keyData.proteinCount} type='Proteines' unit='g'/>
-                    <CardInfos value={userSelect.keyData.carbohydrateCount} type='Glucides' unit='g'/>
-                    <CardInfos value={userSelect.keyData.lipidCount} type='Lipides' unit='g'/>
+                    <CardInfos value={userSelect.keyData.proteinCount.toString()} type='Proteines' unit='g'/>
+                    <CardInfos value={userSelect.keyData.carbohydrateCount.toString()} type='Glucides' unit='g'/>
+                    <CardInfos value={userSelect.keyData.lipidCount.toString()} type='Lipides' unit='g'/>
                 </section>
             </main>
         )

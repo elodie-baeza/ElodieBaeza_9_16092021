@@ -1,11 +1,16 @@
 import * as d3 from 'd3'
 import { useD3 } from 'hooks/useD3';
 import './LineChart.css'
+import PropTypes from 'prop-types';
 
-export default function LineChart({ data }) {
+/**
+ * Create line chart and tooltip with D3 library
+ * 
+ * @component 
+ */
+function LineChart({ data }) {
 
-    const ref = useD3(
-        (svg) => {
+    useD3( svg => {
             // set the dimensions and margins of the graph
             var margin = {top: 30, right: 10, bottom: 30, left: 10},
             width = 260 - margin.left - margin.right,
@@ -105,14 +110,14 @@ export default function LineChart({ data }) {
                     .attr('font-size', '8px')
 
             //  ligne vertical qui suivra le curseur de la souris
-            var verticalLine = svg.append("line")
-                .attr("class", "verticalLine")
-                .attr("x1",0)
-                .attr("y1",0)
-                .attr("x2",0)
-                .attr("y2",height)
-                .style("opacity", 0)
-                .style('fill', 'black');
+            // var verticalLine = svg.append("line")
+            //     .attr("class", "verticalLine")
+            //     .attr("x1",0)
+            //     .attr("y1",0)
+            //     .attr("x2",0)
+            //     .attr("y2",height)
+            //     .style("opacity", 0)
+            //     .style('fill', 'black');
             
             // Create a rect on top of the svg area: this rectangle recovers mouse position
             svg.append('rect')
@@ -186,3 +191,19 @@ export default function LineChart({ data }) {
         <div id="lineChart" />
     );
 }
+
+/**
+ * @example
+ * data = [ {day: '2020-07-01', kilogram: 70, calories: 240},
+ * {day: '2020-07-02', kilogram: 69, calories: 220},
+ * {day: '2020-07-03', kilogram: 70, calories: 280},
+ * {day: '2020-07-04', kilogram: 70, calories: 500},
+ * {day: '2020-07-05', kilogram: 69, calories: 160},
+ * {day: '2020-07-06', kilogram: 69, calories: 162},
+ * {day: '2020-07-07', kilogram: 69, calories: 390} ]
+ */
+LineChart.propTypes = {
+    data: PropTypes.array.isRequired
+  }  
+
+export default LineChart

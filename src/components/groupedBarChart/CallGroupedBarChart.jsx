@@ -2,8 +2,12 @@ import React, {useState, useEffect} from 'react'
 import API from 'data/API';
 import GroupedBarChart from './GroupedBarChart';
 import PropTypes from 'prop-types';
-
-export default function CallGroupedBarChart(props) {
+/**
+ * Perform a user activity request to API and display grouped bar chart with data response
+ * 
+ * @component
+ */
+function CallGroupedBarChart(props) {
     const [activity, setActivity] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -11,7 +15,6 @@ export default function CallGroupedBarChart(props) {
     useEffect(() => {
         API.getActivity(props.userId)
             .then((response) => {
-                // console.log(response.data.data.sessions)
                 setActivity(response.data.data.sessions)
             })
             .catch((error) => {
@@ -35,7 +38,10 @@ export default function CallGroupedBarChart(props) {
 }
 
 CallGroupedBarChart.propTypes = {
-
+    /**
+     * userId is an integer
+     */
     userId: PropTypes.number.isRequired
-
 };
+
+export default CallGroupedBarChart
