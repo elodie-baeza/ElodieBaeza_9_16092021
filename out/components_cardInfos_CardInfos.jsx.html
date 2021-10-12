@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Router</title>
+  <title> components/cardInfos/CardInfos.jsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,173 +79,74 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>Router</h1>
+                    <p>Source</p>
+                    <h1>components/cardInfos/CardInfos.jsx</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Router<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Allows to switch users with url endpoint user/12 and user/18</p></div>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import './CardInfos.css'
+import caloriesIcon from 'assets/calories-icon.png'
+import glucidesIcon from 'assets/carbs-icon.png'
+import lipidesIcon from 'assets/fat-icon.png'
+import proteinIcon from 'assets/protein-icon.png'
+import PropTypes from 'prop-types'
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
+/**
+ * Create custom card with icon corresponding to type
+ * 
+ * @component
+ */
+function CardInfos({type, unit, value}){
+    return(
+        &lt;div className='card'>
+            {(() => {
+                switch (type) {
+                    case 'Calories':
+                        return &lt;img src={caloriesIcon} alt="icon" />;
 
+                    case 'Proteines':
+                        return &lt;img src={proteinIcon} alt="icon" />;
 
-    
-    <h4 class="name" id="Router">
-        <a class="href-link" href="#Router">#</a>
-        
-        <span class="code-name">
-            
-                new Router<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
+                    case 'Glucides':
+                        return &lt;img src={glucidesIcon} alt="icon" />;
 
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="router.js.html" class="button">View Source</a>
-            <span>
-                <a href="router.js.html">router.js</a>, <a href="router.js.html#line10">line 10</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>User dashboard</p></div>
-    
-    
-</div>
-
+                    case 'Lipides':
+                        return &lt;img src={lipidesIcon} alt="icon" />;
                 
-        </div>
-    </div>
+                    default:
+                        return null
+                }
+            })()}
+            &lt;p>&lt;span className='cardValue'>{value}{unit}&lt;/span>&lt;br />{type}&lt;/p>
+        &lt;/div>
+    )
+}
 
+CardInfos.propTypes = {
+    /**
+     * Type quantity
+     */
+    value: PropTypes.number.isRequired,
+    /**
+     * Type unit
+     */
+    unit: PropTypes.string.isRequired,
+    /**
+     * Data type
+     */
+    type: PropTypes.oneOf(['Calories', 'Proteines', 'Glucides', 'Lipides']).isRequired
+}
 
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+export default CardInfos
+</code></pre>
+        </article>
+    </section>
 
 
 

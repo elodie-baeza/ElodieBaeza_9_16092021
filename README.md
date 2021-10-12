@@ -54,5 +54,5 @@ This project includes four endpoints that you will be able to use:
 ## 4. Libreries
 
 - [Axios](https://www.npmjs.com/package/axios) - Free API resquest library.
-- [D3.js](https://d3js.org/) - Library for manipulating documents based on data.
+- [D3.v6](https://d3js.org/) - Library for manipulating documents based on data.
 - [React-router-dom](https://reactrouter.com/) - Collection of navigational components that compose declaratively with your application.

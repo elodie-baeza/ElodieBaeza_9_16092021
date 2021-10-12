@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Router</title>
+  <title> components/spiderChart/formatUserPerformance.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,173 +79,94 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>Router</h1>
+                    <p>Source</p>
+                    <h1>components/spiderChart/formatUserPerformance.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Router<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Allows to switch users with url endpoint user/12 and user/18</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="Router">
-        <a class="href-link" href="#Router">#</a>
-        
-        <span class="code-name">
-            
-                new Router<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="router.js.html" class="button">View Source</a>
-            <span>
-                <a href="router.js.html">router.js</a>, <a href="router.js.html#line10">line 10</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>User dashboard</p></div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types';
+
+// const origin = {userId: 12,
+//     kind: {
+//         1: 'cardio',
+//         2: 'energy',
+//         3: 'endurance',
+//         4: 'strength',
+//         5: 'speed',
+//         6: 'intensity'
+//     },
+//     data: [
+//         {
+//             value: 80,
+//             kind: 1
+//         },
+//         {
+//             value: 120,
+//             kind: 2
+//         },
+//         {
+//             value: 140,
+//             kind: 3
+//         },
+//         {
+//             value: 50,
+//             kind: 4
+//         },
+//         {
+//             value: 200,
+//             kind: 5
+//         },
+//         {
+//             value: 90,
+//             kind: 6
+//         }]}
+
+
+// const dataFormated = [
+//     {"kind": "Cardio", "value": 80},
+//     {"kind": "Energie", "value": 120},
+//     {"kind": "Endurance ", "value": 140},
+//     {"kind": "Strength ", "value": 50},
+//     {"kind": "Speed ", "value": 200},
+//     {"kind": "Intensity ", "value": 90}
+// ]
+
+/**
+ * Replace kind as number by kind as string corresponding
+ * 
+ * @function 
+ */
+function formatUserPerformance(performanceObject) {
+    // dataFormated => [[{}, {}, {}, ]]
+    const dataFormated = [performanceObject.data]
+
+    // Set an uppercase on first letter for kinds
+    const kindsArray = Object.values(performanceObject.kind)
+    kindsArray.forEach((element, index) => {
+        kindsArray[index] = element.charAt(0).toUpperCase() + element.slice(1)
+    });
+
+    // replace kind: 1 by kind: Cardio
+    dataFormated[0].forEach((obj,index) => {
+        obj.kind = kindsArray[index]
+    });
+
+    return dataFormated
+}
+
+formatUserPerformance.PropTypes = {
+    performanceObject: PropTypes.object.isRequired
+}
+
+export default formatUserPerformance
+</code></pre>
+        </article>
+    </section>
 
 
 

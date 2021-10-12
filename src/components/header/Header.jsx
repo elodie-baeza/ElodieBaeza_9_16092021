@@ -2,8 +2,12 @@ import logo from 'assets/logo.png'
 import logoTitle from 'assets/logo_title.png'
 import React from 'react'
 import './Header.css'
-
-export default function Header(){
+/**
+ * Return header page
+ * 
+ * @component
+ */
+function Header(){
     return(
         <header className='headerNav'>
             <a href="*" className='logo'>
@@ -19,3 +23,5 @@ export default function Header(){
         </header>
     )
 }
+
+export default Header

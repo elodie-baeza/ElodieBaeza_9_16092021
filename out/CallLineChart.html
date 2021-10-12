@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Router</title>
+  <title> CallLineChart</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,8 +77,8 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>Router</h1>
+                    <p>Components</p>
+                    <h1>CallLineChart</h1>
                 </header>
                 
 
@@ -89,9 +89,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Router<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Allows to switch users with url endpoint user/12 and user/18</p></div>
+        <h2>
+            &ltCallLineChart <i>userId</i> /&gt
+        </h2>
         
     
 </header>
@@ -110,12 +110,12 @@
 
 
     
-    <h4 class="name" id="Router">
-        <a class="href-link" href="#Router">#</a>
+    <h4 class="name" id="CallLineChart">
+        <a class="href-link" href="#CallLineChart">#</a>
         
         <span class="code-name">
             
-                new Router<span class="signature">()</span><span class="type-signature"></span>
+                &ltCallLineChart <i>userId</i> /&gt
             
         </span>
     </h4>
@@ -123,12 +123,49 @@
 
     
     
+    <div class="description">
+        <p>Perform a user average-sessions request to API and display line bar chart with data response</p>
+    </div>
+    
 
 
 
 
 
 
+
+    
+        <h5>PropTypes:</h5>
+        
+<div class="table-container">
+  <table class="params table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th class="last">Default</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>userId</code></td>
+            <td>
+              number
+            </td>
+            <td>Yes</td>
+            <td>userId is an integer</td>
+            <td></td>
+          </tr>
+          
+    
+    </tbody>
+  </table>
+</div>
+    
 
 
 
@@ -169,9 +206,9 @@
 
     
         <p class="tag-source">
-            <a href="router.js.html" class="button">View Source</a>
+            <a href="components_lineChart_CallLineChart.jsx.html" class="button">View Source</a>
             <span>
-                <a href="router.js.html">router.js</a>, <a href="router.js.html#line10">line 10</a>
+                <a href="components_lineChart_CallLineChart.jsx.html">components/lineChart/CallLineChart.jsx</a>, <a href="components_lineChart_CallLineChart.jsx.html#line10">line 10</a>
             </span>
         </p>
     
@@ -194,23 +231,6 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>User dashboard</p></div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
@@ -221,6 +241,8 @@
         
     
     </div>
+    
+        
     
     
 

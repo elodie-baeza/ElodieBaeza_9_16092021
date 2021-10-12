@@ -7,7 +7,7 @@ import './SideBar.css'
 
 /**
  * @component
- * @return transversal side bar with nav link
+ * @return side bar with nav link
  */
 function SideBar(){
     return(

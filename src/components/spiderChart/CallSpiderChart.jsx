@@ -3,7 +3,12 @@ import API from 'data/API';
 import SpiderChart from './SpiderChart';
 import PropTypes from 'prop-types';
 
-export default function CallSpiderChart(props) {
+/**
+ * Perform a user performance request to API and display spider bar chart with data response
+ * 
+ * @component 
+ */
+function CallSpiderChart(props) {
     const [performance, setPerformance] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -11,7 +16,6 @@ export default function CallSpiderChart(props) {
     useEffect(() => {
         API.getSessionIntensity(props.userId)
             .then((response) => {
-                // console.log(response.data.data)
                 setPerformance(response.data.data)
             })
             .catch((error) => {
@@ -35,8 +39,10 @@ export default function CallSpiderChart(props) {
 }
 
 CallSpiderChart.propTypes = {
-
+    /**
+     * userId is an integer
+     */
     userId: PropTypes.number.isRequired
-
 };
-  
+
+export default CallSpiderChart

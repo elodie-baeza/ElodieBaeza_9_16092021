@@ -2,8 +2,12 @@ import React, {useState, useEffect} from 'react'
 import API from 'data/API';
 import LineChart from './LineChart';
 import PropTypes from 'prop-types';
-
-export default function CallLineChart(props) {
+/**
+ * Perform a user average-sessions request to API and display line bar chart with data response
+ * 
+ * @component
+ */
+function CallLineChart(props) {
     const [sessions, setSessions] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -11,7 +15,6 @@ export default function CallLineChart(props) {
     useEffect(() => {
         API.getSessionDuration(props.userId)
             .then((response) => {
-                // console.log(response.data.data.sessions)
                 setSessions(response.data.data.sessions)
             })
             .catch((error) => {
@@ -35,7 +38,10 @@ export default function CallLineChart(props) {
 }
 
 CallLineChart.propTypes = {
-
+    /**
+     * userId is an integer
+     */
     userId: PropTypes.number.isRequired
-
 };
+
+export default CallLineChart
