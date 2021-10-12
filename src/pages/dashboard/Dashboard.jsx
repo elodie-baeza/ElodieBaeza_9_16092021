@@ -11,16 +11,30 @@ import formatData from 'data/formatData'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
 
-export default function Dashboard(){
-    const [userSelect, setUserSelect] = useState(null);
+/**
+ * Perform user main data request to API and display user dashboard with data response
+ * @component
+ */
+function Dashboard(){
+    const [userSelect, setUserSelect] = useState(12);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     let { id } = useParams()
 
     useEffect(() => {
-        API.getUserById(id)
+        id === undefined && API.getUserById(userSelect)
             .then((response) => {
-                // console.log(response.data.data)
+                setUserSelect(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(true);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+        id !== undefined && API.getUserById(id)
+            .then((response) => {
                 setUserSelect(response.data.data);
             })
             .catch((error) => {
@@ -44,21 +58,17 @@ export default function Dashboard(){
                     <CallGroupedBarChart userId={userSelect.id}/>
                     <CallLineChart userId={userSelect.id}/>
                     <CallSpiderChart userId={userSelect.id}/>
-                    <DonutChart data={userSelect.score*100}/>
+                    <DonutChart value={userSelect.score*100}/>
                 </section>
                 <section className='userMainData'>
-                    <CardInfos data={formatData.calTokCal(userSelect.keyData.calorieCount)} type='Calories' unit='kCal'/>
-                    <CardInfos data={userSelect.keyData.proteinCount} type='Proteines' unit='g'/>
-                    <CardInfos data={userSelect.keyData.carbohydrateCount} type='Glucides' unit='g'/>
-                    <CardInfos data={userSelect.keyData.lipidCount} type='Lipides' unit='g'/>
+                    <CardInfos value={formatData.calTokCal(userSelect.keyData.calorieCount)} type='Calories' unit='kCal'/>
+                    <CardInfos value={userSelect.keyData.proteinCount} type='Proteines' unit='g'/>
+                    <CardInfos value={userSelect.keyData.carbohydrateCount} type='Glucides' unit='g'/>
+                    <CardInfos value={userSelect.keyData.lipidCount} type='Lipides' unit='g'/>
                 </section>
             </main>
         )
     }
 }
 
-Dashboard.propTypes = {
-
-    data: PropTypes.number.isRequired
-
-};
+export default Dashboard
