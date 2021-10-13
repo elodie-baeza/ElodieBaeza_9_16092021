@@ -6,7 +6,7 @@ import CallGroupedBarChart from 'components/groupedBarChart/CallGroupedBarChart'
 import CallLineChart from 'components/lineChart/CallLineChart'
 import CallSpiderChart from 'components/spiderChart/CallSpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
-import API from 'data/API'
+import apiProvider from 'data/apiProvider'
 import formatData from 'data/formatData'
 import { useParams } from 'react-router-dom'
 
@@ -22,7 +22,7 @@ function Dashboard(){
 
     useEffect(() => {
         // call API user 12 par défault avec path '/'
-        id === undefined && API.getUserById(12)
+        id === undefined && apiProvider.getUserById(12)
             .then((response) => {
                 setUserSelect(response.data.data);
             })
@@ -34,7 +34,7 @@ function Dashboard(){
                 setLoading(false);
             });
         //  call API avec récupération de id dans url si path '/user/18' 
-        id !== undefined && API.getUserById(id)
+        id !== undefined && apiProvider.getUserById(id)
             .then((response) => {
                 setUserSelect(response.data.data);
             })

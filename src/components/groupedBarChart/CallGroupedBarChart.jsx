@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import API from 'data/API';
+import apiProvider from 'data/apiProvider';
 import GroupedBarChart from './GroupedBarChart';
 import PropTypes from 'prop-types';
 /**
@@ -13,7 +13,7 @@ function CallGroupedBarChart(props) {
     const [error, setError] = useState(false);
     
     useEffect(() => {
-        API.getActivity(props.userId)
+        apiProvider.getActivity(props.userId)
             .then((response) => {
                 setActivity(response.data.data.sessions)
             })

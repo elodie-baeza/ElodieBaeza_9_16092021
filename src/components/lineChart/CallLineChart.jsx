@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import API from 'data/API';
+import apiProvider from 'data/apiProvider';
 import LineChart from './LineChart';
 import PropTypes from 'prop-types';
 /**
@@ -13,7 +13,7 @@ function CallLineChart(props) {
     const [error, setError] = useState(false);
     
     useEffect(() => {
-        API.getSessionDuration(props.userId)
+        apiProvider.getSessionDuration(props.userId)
             .then((response) => {
                 setSessions(response.data.data.sessions)
             })

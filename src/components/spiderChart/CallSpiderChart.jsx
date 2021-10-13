@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import API from 'data/API';
+import apiProvider from 'data/apiProvider';
 import SpiderChart from './SpiderChart';
 import PropTypes from 'prop-types';
 
@@ -14,7 +14,7 @@ function CallSpiderChart(props) {
     const [error, setError] = useState(false);
     
     useEffect(() => {
-        API.getSessionIntensity(props.userId)
+        apiProvider.getSessionIntensity(props.userId)
             .then((response) => {
                 setPerformance(response.data.data)
             })

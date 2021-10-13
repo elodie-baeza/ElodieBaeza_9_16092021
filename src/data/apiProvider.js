@@ -7,14 +7,15 @@ axios.defaults.baseURL = 'http://localhost:3000';
  * @see https://github.com/elodie-baeza/P9-front-end-dashboard
  * @class 
  */
-class API {
+class apiProvider {
     /**
      * @description retrieves information from a user. This first endpoint includes the user id, user information (first name, last name and age), the current day's score (todayScore) and key data (calorie, macronutrient, etc.).
      * @param {number} id   As an integer
      * @returns USER_MAIN_DATA object
      */
     static async getUserById(id){
-        return await axios.get(`/user/${id}`)
+        const response = await axios.get(`/user/${id}`)
+        return response
     }
 
     /**
@@ -28,7 +29,8 @@ class API {
         //         resolve(axios.get(`/user/${id}/activity`))
         //     }, 3000) ;
         // })
-        return await axios.get(`/user/${id}/activity`);
+        const response = await axios.get(`/user/${id}/activity`);
+        return response
     }
 
     /**
@@ -37,7 +39,8 @@ class API {
      * @returns USER_AVERAGE_SESSIONS object
      */
     static async getSessionDuration(id) {
-        return await axios.get(`/user/${id}/average-sessions`);
+        const response =  await axios.get(`/user/${id}/average-sessions`);
+        return response
     }
 
     /**
@@ -46,8 +49,9 @@ class API {
      * @returns USER_PERFORMANCE object
      */
     static async getSessionIntensity(id) {
-        return await axios.get(`/user/${id}/performance`);
+        const response =  await axios.get(`/user/${id}/performance`);
+        return response
     }
 }
 
-export default API
+export default apiProvider
