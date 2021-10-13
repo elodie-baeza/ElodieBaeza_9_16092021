@@ -39,17 +39,17 @@ function CardInfos({type, unit, value}){
 
 CardInfos.propTypes = {
     /**
-     * Data type
+     * Type: Calories, Proteines, Glucides or Lipides
      */
     type: PropTypes.oneOf(['Calories', 'Proteines', 'Glucides', 'Lipides']).isRequired,
     /**
-     * Type unit
+     * Type unit: kCal or g
      */
-    unit: PropTypes.string.isRequired,
+    unit: PropTypes.oneOf(['kCal', 'g']).isRequired,
     /**
      * Type quantity
      */
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
 }
 
 export default CardInfos
