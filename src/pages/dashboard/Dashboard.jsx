@@ -33,7 +33,7 @@ function Dashboard(){
             .finally(() => {
                 setLoading(false);
             });
-        //  call API avec id url si path '/user/18' 
+        //  call API avec récupération de id dans url si path '/user/18' 
         id !== undefined && API.getUserById(id)
             .then((response) => {
                 setUserSelect(response.data.data);
