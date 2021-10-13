@@ -1,19 +1,15 @@
 import * as d3 from 'd3'
 import { useD3 } from 'hooks/useD3'
-import formatUserPerformance from './formatUserPerformance'
 import './SpiderChart.css'
 import PropTypes from 'prop-types';
+import formatData from 'data/formatData';
 
-// const data = [
-//   [
-//     {"area": "Central ", "value": 80},
+// const data = [[ {"area": "Central ", "value": 80},
 //     {"area": "Kirkdale", "value": 40},
 //     {"area": "Kensington ", "value": 40},
 //     {"area": "Everton ", "value": 90},
 //     {"area": "Picton ", "value": 60},
-//     {"area": "Riverside ", "value": 80}
-//   ]
-// ]
+//     {"area": "Riverside ", "value": 80} ]]
 
 /**
  * Create spider chart with D3 library
@@ -53,7 +49,7 @@ function SpiderChart({ data }) {
     //   .append('svg')
     //   .attr("width", 260)
     //   .attr("height", 260);
-    var allAxis = (formatUserPerformance(data)[0].map(function(i, j){return i.kind}));
+    var allAxis = (formatData.formatUserPerformance(data)[0].map(function(i, j){return i.kind}));
     var total = allAxis.length;
     var radius = config.factor*Math.min(config.w/2, config.h/2);
     //   var Format = d3.format('%');
@@ -65,23 +61,27 @@ function SpiderChart({ data }) {
           .attr("height", config.h+config.ExtraWidthY)
         .append("g")
           .attr("transform", "translate(" + config.TranslateX + "," + config.TranslateY + ")");
-    
+
+    function drawSegment(levelFactor) {
+      g.selectAll(".levels")
+      .data(allAxis)
+      .enter()
+      .append("svg:line")
+       .attr("x1", function(d, i){return levelFactor*(1-config.factor*Math.sin(i*config.radians/total));})
+       .attr("y1", function(d, i){return levelFactor*(1-config.factor*Math.cos(i*config.radians/total));})
+       .attr("x2", function(d, i){return levelFactor*(1-config.factor*Math.sin((i+1)*config.radians/total));})
+       .attr("y2", function(d, i){return levelFactor*(1-config.factor*Math.cos((i+1)*config.radians/total));})
+       .attr("class", "line")
+       .style("stroke", "white")
+       .style("stroke-opacity", "0.75")
+       .style("stroke-width", "1px")
+       .attr("transform", "translate(" + (config.w/2-levelFactor) + ", " + (config.h/2-levelFactor) + ")");
+    }
+
     //Circular segments
     for(var j=0; j<config.levels; j++){
       var levelFactor = config.factor*radius*((j+1)/config.levels);
-      g.selectAll(".levels")
-       .data(allAxis)
-       .enter()
-       .append("svg:line")
-        .attr("x1", function(d, i){return levelFactor*(1-config.factor*Math.sin(i*config.radians/total));})
-        .attr("y1", function(d, i){return levelFactor*(1-config.factor*Math.cos(i*config.radians/total));})
-        .attr("x2", function(d, i){return levelFactor*(1-config.factor*Math.sin((i+1)*config.radians/total));})
-        .attr("y2", function(d, i){return levelFactor*(1-config.factor*Math.cos((i+1)*config.radians/total));})
-        .attr("class", "line")
-        .style("stroke", "white")
-        .style("stroke-opacity", "0.75")
-        .style("stroke-width", "1px")
-        .attr("transform", "translate(" + (config.w/2-levelFactor) + ", " + (config.h/2-levelFactor) + ")");
+      drawSegment(levelFactor)
     }
 
     let series = 0;
@@ -104,7 +104,7 @@ function SpiderChart({ data }) {
           .attr("y", function(d, i){return config.h/2*(1-Math.cos(i*config.radians/total))-20*Math.cos(i*config.radians/total);});  
  
     var dataValues = [];
-    formatUserPerformance(data).forEach(function(y, x){
+    formatData.formatUserPerformance(data).forEach(function(y, x){
       g.selectAll(".nodes")
       .data(y, function(j, i){
         dataValues.push([
