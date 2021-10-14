@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 1. Project
 
 In the project directory, you can run:
 
@@ -10,13 +10,11 @@ In the project directory, you can run:
 
 ### `npm start`
 
-## 1. Backend project
+## 2. Backend project
 
 [Backend repository](https://github.com/elodie-baeza/P9-front-end-dashboard)
 
 This repo contains all the source code to run the micro API for the sports analytics dashboard.
-
-## 2. Project (**without Docker**)
 
 ### 2.1 Prerequisites
 
@@ -25,16 +23,16 @@ This repo contains all the source code to run the micro API for the sports analy
 
 If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
 
-### 2.2 Launching the project
+### 2.2 Launching the backend project
 
 - Fork the repository
 - Clone it on your computer.
 - The `yarn` command will allow you to install the dependencies.
 - The `yarn dev` command will allow you to run the micro API.
 
-## 3. Endpoints
+## 2.3. Endpoints
 
-### 3.1 Possible endpoints
+### 2.3.1 Possible endpoints
 
 This project includes four endpoints that you will be able to use: 
 
@@ -46,10 +44,16 @@ This project includes four endpoints that you will be able to use:
 
 **Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.**
 
-### 3.2 Examples of queries
+### 2.3.2 Examples of queries
 
 - `http://localhost:3000/user/12/performance` - Retrieves the performance of the user with id 12
 - `http://localhost:3000/user/18` - Retrieves user 18's main information.
+
+## 3. Update documentation
+
+### `npm run docs`
+
+Use Jsdoc and better-docs to comment the code to keep the documentation up to date.
 
 ## 4. Libreries
 

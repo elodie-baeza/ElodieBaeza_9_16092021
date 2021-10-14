@@ -43,17 +43,17 @@ reactComponents['DashboardHeader'] = Component5;
 import Component6 from '../src/components/donutChart/DonutChart.jsx';
 reactComponents['DonutChart'] = Component6;
 
-import Component7 from '../src/components/groupedBarChart/GroupedBarChart.js';
+import Component7 from '../src/components/groupedBarChart/GroupedBarChart.jsx';
 reactComponents['GroupedBarChart'] = Component7;
 
 import Component8 from '../src/components/header/Header.jsx';
 reactComponents['Header'] = Component8;
 
-import Component9 from '../src/components/lineChart/LineChart.js';
+import Component9 from '../src/components/lineChart/LineChart.jsx';
 reactComponents['LineChart'] = Component9;
 
 import Component10 from '../src/components/sideBar/SideBar.jsx';
 reactComponents['SideBar'] = Component10;
 
-import Component11 from '../src/components/spiderChart/SpiderChart.js';
+import Component11 from '../src/components/spiderChart/SpiderChart.jsx';
 reactComponents['SpiderChart'] = Component11;

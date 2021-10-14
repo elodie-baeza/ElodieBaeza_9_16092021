@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="API.html">API</a></li><li><a href="formatData.html">formatData</a></li><li><a href="Router.html">Router</a></li></ul><h3>Components</h3><ul><li><a href="CallGroupedBarChart.html">CallGroupedBarChart</a></li><li><a href="CallLineChart.html">CallLineChart</a></li><li><a href="CallSpiderChart.html">CallSpiderChart</a></li><li><a href="CardInfos.html">CardInfos</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="DashboardHeader.html">DashboardHeader</a></li><li><a href="DonutChart.html">DonutChart</a></li><li><a href="GroupedBarChart.html">GroupedBarChart</a></li><li><a href="Header.html">Header</a></li><li><a href="LineChart.html">LineChart</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SpiderChart.html">SpiderChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#formatUserPerformance">formatUserPerformance</a></li><li><a href="global.html#useD3">useD3</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="apiProvider.html">apiProvider</a></li><li><a href="formatData.html">formatData</a></li><li><a href="Router.html">Router</a></li></ul><h3>Components</h3><ul><li><a href="CallGroupedBarChart.html">CallGroupedBarChart</a></li><li><a href="CallLineChart.html">CallLineChart</a></li><li><a href="CallSpiderChart.html">CallSpiderChart</a></li><li><a href="CardInfos.html">CardInfos</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="DashboardHeader.html">DashboardHeader</a></li><li><a href="DonutChart.html">DonutChart</a></li><li><a href="GroupedBarChart.html">GroupedBarChart</a></li><li><a href="Header.html">Header</a></li><li><a href="LineChart.html">LineChart</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SpiderChart.html">SpiderChart</a></li></ul></div>
                 
             </nav>
         </div>
@@ -90,7 +90,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React, {useState, useEffect} from 'react'
-import API from 'data/API';
+import apiProvider from 'data/apiProvider';
 import GroupedBarChart from './GroupedBarChart';
 import PropTypes from 'prop-types';
 /**
@@ -104,7 +104,7 @@ function CallGroupedBarChart(props) {
     const [error, setError] = useState(false);
     
     useEffect(() => {
-        API.getActivity(props.userId)
+        apiProvider.getActivity(props.userId)
             .then((response) => {
                 setActivity(response.data.data.sessions)
             })
@@ -120,7 +120,7 @@ function CallGroupedBarChart(props) {
     if (loading) {
         return &lt;div>Loading&lt;/div>;
     } else if (error) {
-        return &lt;div>Erreur&lt;/div>;
+        return &lt;div>Erreur get activity&lt;/div>;
     } else {
         return (
             &lt;GroupedBarChart data={activity} />
