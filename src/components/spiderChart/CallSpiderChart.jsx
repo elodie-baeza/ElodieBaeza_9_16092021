@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import apiProvider from 'data/apiProvider';
 import SpiderChart from './SpiderChart';
 import PropTypes from 'prop-types';
+import formatData from 'data/formatData';
 
 /**
  * Perform a user performance request to API and display spider bar chart with data response
@@ -16,7 +17,7 @@ function CallSpiderChart(props) {
     useEffect(() => {
         apiProvider.getSessionIntensity(props.userId)
             .then((response) => {
-                setPerformance(response.data.data)
+                setPerformance(formatData.formatUserPerformance(response.data.data))
             })
             .catch((error) => {
                 console.log(error);

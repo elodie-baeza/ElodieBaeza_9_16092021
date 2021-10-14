@@ -2,7 +2,6 @@ import * as d3 from 'd3'
 import { useD3 } from 'hooks/useD3'
 import './SpiderChart.css'
 import PropTypes from 'prop-types';
-import formatData from 'data/formatData';
 
 // const data = [[ {"area": "Central ", "value": 80},
 //     {"area": "Kirkdale", "value": 40},
@@ -49,7 +48,7 @@ function SpiderChart({ data }) {
     //   .append('svg')
     //   .attr("width", 260)
     //   .attr("height", 260);
-    var allAxis = (formatData.formatUserPerformance(data)[0].map(function(i, j){return i.kind}));
+    var allAxis = (data[0].map(function(i, j){return i.kind}));
     var total = allAxis.length;
     var radius = config.factor*Math.min(config.w/2, config.h/2);
     //   var Format = d3.format('%');
@@ -104,7 +103,7 @@ function SpiderChart({ data }) {
           .attr("y", function(d, i){return config.h/2*(1-Math.cos(i*config.radians/total))-20*Math.cos(i*config.radians/total);});  
  
     var dataValues = [];
-    formatData.formatUserPerformance(data).forEach(function(y, x){
+    data.forEach(function(y, x){
       g.selectAll(".nodes")
       .data(y, function(j, i){
         dataValues.push([
