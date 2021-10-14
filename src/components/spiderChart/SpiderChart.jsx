@@ -164,7 +164,7 @@ SpiderChart.propTypes = {
   /**
    * data is an object
    */
-  data: PropTypes.object.isRequired
+  data: PropTypes.array.isRequired
 }
 
 export default SpiderChart
