@@ -31,7 +31,7 @@ function CallSpiderChart(props) {
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
-        return <div>Erreur</div>;
+        return <div>Erreur get performance</div>;
     } else {
         return (
             <SpiderChart data={performance} />

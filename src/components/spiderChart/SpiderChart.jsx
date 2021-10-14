@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { useD3 } from 'hooks/useD3'
+import { useEffect, useRef } from 'react';
 import './SpiderChart.css'
 import PropTypes from 'prop-types';
 
@@ -16,9 +16,9 @@ import PropTypes from 'prop-types';
  * @component 
  */
 function SpiderChart({ data }) {
+  const ref = useRef()
 
-  useD3(
-    (svg) => {
+  useEffect(() => {
     // Config for the Radar chart
     var config = {
       radius: 5,
@@ -54,7 +54,7 @@ function SpiderChart({ data }) {
     //   var Format = d3.format('%');
     // d3.select('#spiderChart').select("svg").remove();
 
-    var g = d3.select('#spiderChart')
+    var g = d3.select(ref.current)
         .append("svg")
           .attr("width", config.w+config.ExtraWidthX)
           .attr("height", config.h+config.ExtraWidthY)
@@ -145,10 +145,10 @@ function SpiderChart({ data }) {
       series++;
     });
     series=0;
-  },[data.length]);
+  },[data]);
 
   return (
-    <div id="spiderChart" />
+    <div ref={ref} id="spiderChart" />
   );
 }
 

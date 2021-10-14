@@ -7,7 +7,6 @@ import CallLineChart from 'components/lineChart/CallLineChart'
 import CallSpiderChart from 'components/spiderChart/CallSpiderChart'
 import DonutChart from 'components/donutChart/DonutChart'
 import apiProvider from 'data/apiProvider'
-import formatData from 'data/formatData'
 import { useParams } from 'react-router-dom'
 
 /**

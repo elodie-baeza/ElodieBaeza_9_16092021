@@ -29,7 +29,7 @@ function CallGroupedBarChart(props) {
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
-        return <div>Erreur</div>;
+        return <div>Erreur get activity</div>;
     } else {
         return (
             <GroupedBarChart data={activity} />

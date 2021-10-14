@@ -29,7 +29,7 @@ function CallLineChart(props) {
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
-        return <div>Erreur</div>;
+        return <div>Erreur get average-sessions</div>;
     } else {
         return (
             <LineChart data={sessions} />

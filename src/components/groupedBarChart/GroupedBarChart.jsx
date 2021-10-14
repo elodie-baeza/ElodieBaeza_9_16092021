@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { useD3 } from 'hooks/useD3';
+import { useEffect, useRef } from 'react';
 import './GroupedBarChart.css'
 import PropTypes from 'prop-types';
 
@@ -9,8 +9,10 @@ import PropTypes from 'prop-types';
  * @component
  */
 function GroupedBarChart({ data }) {
-    const ref = useD3(
-        (svg) => {
+    const ref = useRef()
+
+    useEffect(() => {
+            const svg = d3.select(ref.current)
             // set the dimensions and margins of the graph
             const margin = { top: 95, right: 43, bottom: 62, left: 43 };
             const width = 835
@@ -173,7 +175,7 @@ function GroupedBarChart({ data }) {
                 .style("font-size", "15px")
                 .style("fill", "#74798C")
                 .attr("alignment-baseline","middle")
-        }, [data.length]);
+        }, [data]);
 
     return (
         <div id={'groupedBarChart'}>

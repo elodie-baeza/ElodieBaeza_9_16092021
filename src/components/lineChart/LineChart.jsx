@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { useD3 } from 'hooks/useD3';
+import { useEffect, useRef } from 'react';
 import './LineChart.css'
 import PropTypes from 'prop-types';
 
@@ -9,15 +9,16 @@ import PropTypes from 'prop-types';
  * @component 
  */
 function LineChart({ data }) {
+    const ref = useRef()
 
-    useD3( svg => {
+    useEffect(() => {
             // set the dimensions and margins of the graph
             var margin = {top: 30, right: 10, bottom: 30, left: 10},
             width = 260 - margin.left - margin.right,
             height = 260 - margin.top - margin.bottom;
 
             // append the svg object to the body of the page
-            svg = d3.select("#lineChart")
+            const svg = d3.select(ref.current)
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
@@ -184,11 +185,10 @@ function LineChart({ data }) {
                 .append("text")
                 .text(`sessions`)
                 .style('transform', 'translate(0, 25px)')
-
-    }, [data.length]);
+    }, [data]);
 
     return (
-        <div id="lineChart" />
+        <div ref={ref} id="lineChart" />
     );
 }
 
